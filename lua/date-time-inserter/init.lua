@@ -102,9 +102,11 @@ local function convert_date_to_config_format(date)
     end
 
     -- Remove the last separator
+    -- Only removes if last character is the separator
     -- e.g. 12/31/2022/ -> 12/31/2022
-    new_date = new_date:sub(1, -2)
-
+    if not new_date:sub(-1) == separator then
+        new_date = new_date:sub(1, -2)
+    end
     return new_date
 end
 
